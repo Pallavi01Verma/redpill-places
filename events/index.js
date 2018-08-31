@@ -58,7 +58,7 @@ module.exports = function(io) {
              console.dir("REPLY =============="+reply);
              console.log("USER==="+usernames[0]);
             pub.publish('chat', reply);
-          //  console.log("USER==="+socket.handshake.session.userid);
+         
         });
 
         /*
