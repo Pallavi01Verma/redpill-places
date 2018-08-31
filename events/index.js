@@ -7,12 +7,7 @@ sub.subscribe('chat');
 module.exports = function(io) {
 
     io.on('connection', function(socket) {
-    //  connections.push(socket)
-      console.log("Connected......."+socket.handshake.session);
-      console.log(socket.handshake.session.cookie);
-    //  console.log(socket.nsp.server.engine);
-   console.log(socket.id);
-var usernames=[];
+   var usernames=[];
    socket.on('adduser', function(username){ console.log("username : "+username);
      // we store the username in the socket session for this client
      socket.username = username;
@@ -27,57 +22,7 @@ var usernames=[];
      // update the list of users in chat, client-side
      io.sockets.emit('updateusers', usernames);
    });
-  // console.log("socket.request.user : "+request.user);
-  //  console.log(io.sockets.adapter.rooms);
-
-
-    /*  console.log("Socket id = "+socket.id);
-
-    io.on('connection', function(socket) {
-      socket.on('send-nickname', function(nickname) {
-        socket.nickname = nickname;
-        users.push(socket.nickname);
-        console.log(users);
-      });
-    });
-*/
-
-
-/*
-    // When the username is connected it’s stored as a session variable
-    socket.on('new_client', function(username) {
-      console.log(username+'  is online');
-      io.sockets.emit('event_new',{value:"Hello"+username.text});
-    });
-*/
-
-
-/*    socket.on('newUser', function(user){
-      console.log("Name : "+user);
-      var newUser = {id: socket.id, name: user};
-      onlineUsers.push(newUser);
-      io.to(socket.id).emit('newUser', newUser);
-      io.emit('onlineUsers', onlineUsers);
-    });
-
-*/
-
-  //   console.log(io.sockets.adapter.nsp.server.eio.clients.request);
-  /*  io.of('/').adapter.clients(function (err, clients) {
-      console.log("clients: ", clients[0]); // an array containing all connected socket ids
-    });
-*/
-
-/*if(typeof socket.handshake.name=="undefined"){
-  var user = {
-    name : socket.handshake.query.name,
-    id : socket.handshake.query.id
-  //  email : socket.handshake.query.email,
-  }
-  console.log(socket.handshake);
-}*/
-    //  var clients = io.sockets.clients();
-      //console.log(sockets.client);
+ 
         /*
          When the user sends a chat message, publish it to everyone (including myself) using
          Redis' 'pub' client we created earlier.
