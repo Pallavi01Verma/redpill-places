@@ -22,10 +22,7 @@ module.exports = function(io) {
      // update the list of users in chat, client-side
      io.sockets.emit('updateusers', usernames);
    });
-  // console.log("socket.request.user : "+request.user);
-  //  console.log(io.sockets.adapter.rooms);
-
-        /*
+         /*
          When the user sends a chat message, publish it to everyone (including myself) using
          Redis' 'pub' client we created earlier.
          Notice that we are getting user's name from session.
