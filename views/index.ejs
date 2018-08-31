@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <script src='/jquery.min.js'></script>
+  <script src='/date.js'></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/client.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- <script src=”https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.1/emojionearea.min.css" rel="stylesheet" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.1/emojionearea.min.js"></script>
+
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      height: 100%;
+      position: relative;
+    }
+
+    /* Height / width / positioning can be customized for your use case.
+                 For demo purposes, we make firepad fill the entire browser. */
+    #firepad-container {
+      width: 100%;
+      height: 25%;
+    }
+  </style>
+  <script src="https://meet.jit.si/external_api.js"></script>
+
+  <!-- Quill.js -->
+  <script src="https://cdn.quilljs.com/1.1.3/quill.js"></script>
+  <script src="https://cdn.quilljs.com/1.1.3/quill.min.js"></script>
+  <!-- Quill Styles -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.quilljs.com/1.1.3/quill.snow.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.quilljs.com/1.1.3/quill.bubble.css">
+  <!-- Quill Emojies -->
+  <script src="/quill-emoji.js"></script>
+  <link rel="stylesheet" href="/quill-emoji.css">
+  
+  <!-- Emojionearea Emojies -->
+  <link rel="stylesheet" href="/emojionearea.css">
+  <script type="text/javascript" src="/emojionearea.min.js"></script>
+</head>
+
+<body>
+  <b>Server: </b><%= server %>
+    <br/>
+    <% if(user) { %>
+      <b>User: </b> <label id="user"><%= user %></label> <a href="/logout" style='color:blue;text-decoration: underline'> Log out</a>
+      <% } %>
+  <div id="ask" class="bordered" style="display: none;">
+    Name: <input type="text" id="name" /> <a href="#"><span class="join">Join!</span></a>
+  </div>
+  <div id="channel" class="bordered" style="display: none;">
+    <div id="msgs">
+      <h4>Server:
+        <%= server %>
+      </h4>
+      <ul>
+        <li class="message" style="display: none">
+          <span class="user"></span><span class="message"></span>
+          <span class="time"></span>
+        </li>
+        <li class="control" style="display: none">
+          <span class="user"></span>&nbsp;<span class="message"></span>
+          <span class="time"></span>
+        </li>
+      </ul>
+    </div>
+    <!--  <div id="input"> august 23  -->
+    <form id="add-msg-form">
+      <div id="editor"></div>
+      <span class="input-group-btn">
+        <button class="btn btn-info" id="btnSend" type="submit">Send</button>
+      </span>
+  </div>
+  <script src="/client.js"></script>
+</body>
+
+</html>
