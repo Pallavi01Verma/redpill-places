@@ -28,12 +28,8 @@ module.exports = function(io) {
          Notice that we are getting user's name from session.
          */
         socket.on('chat', function(data) { console.log("UserNames : "+usernames[0]);
-
-
             var msg = JSON.parse(data);
-
             console.log("Index event ->MSG : "+data.user);
-            console.log(data);
             var reply = JSON.stringify({
                 action: 'message',
               //  user: socket.handshake.session.user,
