@@ -52,12 +52,12 @@ module.exports = function(io) {
             var reply = JSON.stringify({
                 action: 'control',
               //  user: socket.handshake.session.user,
-              user: usernames[0],
+                user: usernames[0],
                 msg: ' joined the channel'
             });
              console.dir("REPLY =============="+reply);
              console.log("USER==="+usernames[0]);
-            pub.publish('chat', reply);
+             pub.publish('chat', reply);
          
         });
 
@@ -68,6 +68,5 @@ module.exports = function(io) {
         sub.on('message', function(channel, message) { console.log("Channel : "+channel+"message"+message)
             socket.emit(channel, message);
         });
-
     })
 }
