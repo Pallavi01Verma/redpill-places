@@ -7,13 +7,8 @@ sub.subscribe('chat');
 module.exports = function(io) {
 
     io.on('connection', function(socket) {
-    //  connections.push(socket)
-      console.log("Connected......."+socket.handshake.session);
-      console.log(socket.handshake.session.cookie);
-    //  console.log(socket.nsp.server.engine);
-   console.log(socket.id);
-var usernames=[];
-   socket.on('adduser', function(username){ console.log("username : "+username);
+    var usernames=[];
+    socket.on('adduser', function(username){ console.log("username : "+username);
      // we store the username in the socket session for this client
      socket.username = username;
      usernames[0] = username;
@@ -48,8 +43,6 @@ var usernames=[];
                 user: usernames[0],
                 msg: msg.msg
             });
-            console.dir("reply----------------------->"+usernames[0]);
-
             pub.publish('chat', reply);
         });
 
